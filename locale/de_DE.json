@@ -1,0 +1,9 @@
+{
+    "text-output-plugin.plugin.name": "Text Output",
+    "text-output-plugin.actions.text-output.name": "Text Output",
+    "text-output-plugin.actions.text-output.label": "Ausgabetext:",
+    "actions.write-text.delay.title": "Verzögerung",
+    "actions.write-text.delay.subtitle": "Verzögerung zwischen den Tastendrücken"
+}
+
+    

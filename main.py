@@ -1,27 +1,36 @@
 # Import StreamController modules
 from src.backend.PluginManager.PluginBase import PluginBase
 from src.backend.PluginManager.ActionHolder import ActionHolder
+from src.backend.DeckManagement.InputIdentifier import Input
+from src.backend.PluginManager.ActionInputSupport import ActionInputSupport
 
 # Import actions
-from .actions.SimpleAction.SimpleAction import SimpleAction
+from .actions.TextOutput import TextOutput
 
-class PluginTemplate(PluginBase):
+class TextOutputPlugin(PluginBase):
     def __init__(self):
         super().__init__()
 
+        self.lm = self.locale_manager
+
         ## Register actions
-        self.simple_action_holder = ActionHolder(
+        self.text_output_holder = ActionHolder(
             plugin_base = self,
-            action_base = SimpleAction,
-            action_id = "dev_core447_Template::SimpleAction", # Change this to your own plugin id
-            action_name = "Simple Action",
+            action_base = TextOutput,
+            action_id_suffix = "TextOutput",
+            action_name = self.lm.get("text-output-plugin.actions.text-output.name"),
+            action_support={
+                Input.Key: ActionInputSupport.SUPPORTED,
+                Input.Dial: ActionInputSupport.SUPPORTED,
+                Input.Touchscreen: ActionInputSupport.UNTESTED
+            }
         )
-        self.add_action_holder(self.simple_action_holder)
+        self.add_action_holder(self.text_output_holder)
 
         # Register plugin
         self.register(
-            plugin_name = "Template",
-            github_repo = "https://github.com/StreamController/PluginTemplate",
+            plugin_name = self.lm.get("text-output-plugin.plugin.name"),
+            github_repo = "https://github.com/orehren/TextOutputPlugin",
             plugin_version = "1.0.0",
-            app_version = "1.1.1-alpha"
+            app_version = "1.4.5-beta"
         )

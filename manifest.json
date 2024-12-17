@@ -1,6 +1,17 @@
 {
-    "version": "",
-    "thumbnail": "",
-    "id": "",
-    "name": ""
+    "version": "0.1.0",
+    "thumbnail": "store/Thumbnail.png",
+    "id": "scientificpsycho_TextOutputPlugin",
+    "name": "Text Output",
+    "descriptions": {
+        "en_US": "Output text to the current window."
+    },
+    "short-descriptions": {
+        "en_US": "Output Text"
+    },
+    "tags": ["Utility"],
+    "minimum-app-version": "1.0.0",
+    "app-version": "1.4.11-beta",
+    "description": "Output text to the current window.",
+    "short-description": "Output Text"
 }
