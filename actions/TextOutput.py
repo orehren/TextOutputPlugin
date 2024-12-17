@@ -23,11 +23,11 @@ class TextOutput(ActionBase):
         self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "keyboard.png"))
 
     def get_custom_config_area(self):
-        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, vexpand=True, margin_top=5, margin_bottom=5, margin_start=5, margin_end=5)
-        main_box.append(Gtk.Label(label=self.plugin_base.lm.get("text-output-plugin.actions.text-output.label"), xalign=0, css_classes=["com_core447_OSPlugin-header"], margin_bottom=15))
+        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, vexpand=True, margin_top=5, margin_bottom=5, margin_start=5, margin_end=5)
+        self.main_box.append(Gtk.Label(label=self.plugin_base.lm.get("text-output-plugin.actions.text-output.label"), xalign=0, css_classes=["com_core447_OSPlugin-header"], margin_bottom=15))
 
         self.text_view = Gtk.TextView(editable=True, wrap_mode=Gtk.WrapMode.WORD_CHAR, hexpand=True, vexpand=True)
-        main_box.append(self.text_view)
+        self.main_box.append(self.text_view)
         self.buffer = self.text_view.get_buffer()
 
         self.load_defaults()
