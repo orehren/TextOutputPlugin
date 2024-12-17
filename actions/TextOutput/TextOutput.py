@@ -16,7 +16,6 @@ import os
 from typing import List
 from .helper import keyboard_write
 
-
 class TextOutput(ActionBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
