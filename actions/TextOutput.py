@@ -52,10 +52,10 @@ class TextOutput(ActionBase):
         if text is None:
             return
         
-        if self.plugin_base.ui is None:
+        if self.ui is None:
             self.show_error(1)
             return
 
         delay = settings.get("delay", 0.01)
 
-        keyboard_write(self.plugin_base.ui, text, delay=delay)
+        keyboard_write(self.ui, text, delay=delay)
