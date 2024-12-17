@@ -108,14 +108,13 @@ class TextOutput(ActionBase):
     def on_key_down(self):
         settings = self.get_settings()
         text = settings.get("text")
+        if text is None:
+            return
+            
+        if self.plugin_base.ui is None:
+            self.show_error(1)
+            return
 
-    if text is None:
-        return
-
-    if self.plugin_base.ui is None:
-        self.show_error(1)
-        return
-
-    delay = settings.get("delay", 0.01)
+        delay = settings.get("delay", 0.01)
 
     keyboard_write(self.plugin_base.ui, text, delay=delay)
