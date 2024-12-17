@@ -34,7 +34,7 @@ class TextOutput(ActionBase):
 
         self.buffer.connect("changed", self.on_change)
         
-        return main_box
+        return self.main_box
     
     def load_defaults(self):
         settings = self.get_settings()
