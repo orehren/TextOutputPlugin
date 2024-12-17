@@ -56,14 +56,14 @@ class TextOutput(ActionBase):
         )
 
         self.main_box.append(self.text_view)
-
-    self.buffer = self.text_view.get_buffer()
-
-    self.load_defaults_for_custom_area()
-
-    self.buffer.connect("changed", self.on_change)
-
-    return self.main_box
+        
+        self.buffer = self.text_view.get_buffer()
+        
+        self.load_defaults_for_custom_area()
+        
+        self.buffer.connect("changed", self.on_change)
+        
+        return self.main_box
 
     def get_config_rows(self) -> list:
         self.delay_row = Adw.SpinRow.new_with_range(min=0, max=1, step=0.01)
