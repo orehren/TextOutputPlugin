@@ -42,9 +42,9 @@ class KeyMapper:
           symbols = self.xkb_keymap.key_get_syms_by_level(keycode, 0, 0)
           if not symbols:
               continue
+              
       log.debug(f"Symbol Attributes: {dir(symbols)}") # Added introspection for symbols
       
-
           for symbol in symbols:
             if xkb.keysym_to_string(symbol) == utf32_char:
                found_keycodes.append(keycode)
