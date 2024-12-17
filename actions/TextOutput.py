@@ -46,7 +46,7 @@ class TextOutput(ActionBase):
         settings["text"] = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), False)
         self.set_settings(settings)
 
-    def on_key_down(self):
+    def on_key_down(self) -> None:
         settings = self.get_settings()
         text = settings.get("text")
         if text is None:
