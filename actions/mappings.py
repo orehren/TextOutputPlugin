@@ -43,8 +43,7 @@ class KeyMapper:
           if not symbols:
               continue
               
-      log.debug(f"Symbol Attributes: {dir(symbols)}") # Added introspection for symbols
-      
+      log.debug(f"Symbol Attributes: {dir(symbols)}") 
           for symbol in symbols:
             if xkb.keysym_to_string(symbol) == utf32_char:
                found_keycodes.append(keycode)
