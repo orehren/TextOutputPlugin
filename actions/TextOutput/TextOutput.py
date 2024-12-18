@@ -5,20 +5,31 @@ from src.backend.PluginManager.PluginBase import PluginBase
 
 # Import gtk modules
 import gi
-
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw, Gdk
 
+import evdev
+
+from evdev import ecodes
+from selectors import DefaultSelector, EVENT_READ
+from evdev import categorize, UInput
+
 from loguru import logger as log
 
+import pyclip
+
+import threading
+from time import sleep
 import os
-from typing import List
+from PIL import Image
+
 from .helper import keyboard_write
 
 class TextOutput(ActionBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        
         self.has_configuration = True
 
     def on_ready(self):
@@ -85,14 +96,12 @@ class TextOutput(ActionBase):
 
     def load_defaults_for_custom_area(self):
         settings = self.get_settings()
-        text = settings.get("text", "")
-        self.buffer.set_text(text)
+        self.buffer.set_text(settings.get("text", ""))
         log.debug(f"Loaded text from settings: {text}")
 
     def load_defaults_for_rows(self):
         settings = self.get_settings()
         delay = settings.get("delay", 0.01)
-        self.delay_row.set_value(delay)
         log.debug(f"Loaded delay from settings: {delay}")
 
     def on_change(self, buffer):
@@ -114,4 +123,4 @@ class TextOutput(ActionBase):
 
         delay = settings.get("delay", 0.01)
 
-    keyboard_write(self.plugin_base.ui, text, delay=delay)
+        keyboard_write(self.plugin_base.ui, text, delay=delay)
